@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crystal Game Pseudocode</title>
+</head>
+<body>
+<h1>Crystal Game Pseudocode!</h1>
+<br><br>
+
+<h2>User Interface/Interaction</h2>
+<ul>
+<li>On load, User is presented with a randomly generated target number between 19-120.</li> 
+<li>Below that, four clickable gems, each with a random value of 1-12.</li>
+<li>Below that, the user's score, which is increased with each press of a gem.</li>
+<li>Off to the side is a counter box, with wins and losses.</li> 
+<li>Above the wins/losses, a text field appears ( .hide() ) when the user score matches the target score (win), or when the user score exceeds the target score (lose).</li>
+<li>In either case, the target number is regenerated, the user score is reset to 0, and the gem values are regenerated.</li>
+</ul>
+<br>
+<h2>Variables</h2>
+<ul>
+	<li>targetNum = The target number the user is trying to hit.  Randomly generated between 19-120.</li>
+	<li>userNum = The number the user generates by clicking gems.</li>
+	<li>gemOne = The first gem.  A clickable variable that has a randomly generated value of 1-12.  Adds the value 
+		to the userNum on every click</li>
+	<li>gemTwo = The second gem.  A clickable variable that has a randomly generated value of 1-12.  Adds the value 
+		to the userNum on every click</li>
+	<li>gemThree = The third gem.  A clickable variable that has a randomly generated value of 1-12.  Adds the value 
+		to the userNum on every click</li>
+	<li>gemFour = The fourth gem.  A clickable variable that has a randomly generated value of 1-12.  Adds the value 
+		to the userNum on every click</li>	
+	<li>isEqual = Boolean.  Is the userNum = targetNum?  If so, do all the things assoc. w/ winning</li>
+	<li>isGreater = Boolean.  Is the userNum >= targetNum?  If so, do all the things assoc. w/ losing</li>
+	<li>wins/losses = Counters.  Keeps track of wins and losses w/ ++</li>
+</ul>
+<br>
+<h2>Function</h2>
+<strong>$(document).ready(function(){}</strong> - When the page loads, assign the variables to the values you want. <br> 
+<strong>function randomIntFromInterval(min,max)
+{    return Math.floor(Math.random()*(max-min+1)+min);}</strong> - Our random number generator.  This way we can pass in our number range and generate a number as we like<br>
+We'll need an if/else conditional for wins an losses.  They'll need to reveal "you win!"/"you lose!" text through .hide(), and ++ our wins/losses var.
+</strong>
+</body>
+</html>
