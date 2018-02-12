@@ -36,7 +36,9 @@ body {
 	border-color: yellow;
 	position: relative;
 
-}.winsAndLosses {
+}
+
+.winsAndLosses {
 	font-size: 36px;
 	background-color: forestgreen;
 	width: 200px;
@@ -49,4 +51,35 @@ body {
 	left: 300px;
 	top: 608px;
 
+}
+
+.gems {
+	padding: 50px;
+	position: absolute;
+	left: 40px;
+	position: relative;
+}
+
+.yourScoreTitle {
+	background-color: #0094e6;
+	width: 250px;
+	height: 35px;
+	position:absolute;
+	left: 150px;
+	border: 5px solid;
+	border-color: pink;
+}
+
+.yourScore {
+	background-color: #0094e6;
+	width: 250px;
+	height: 250px;
+	position:absolute;
+	left: 100px;
+	border: 5px solid;
+	border-color: pink;
+	position: absolute;
+	left: 150px;
+	top: 1160px;
+	padding-bottom: 10px;
 }

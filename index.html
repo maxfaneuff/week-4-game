@@ -3,6 +3,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">	
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<title>Gem Game!</title>
 </head>
 <body>
@@ -31,16 +32,210 @@
 
 <div class="targetNum"></div>
 
-<div class="winsAndLosses"></div>
-
-<div class="gems">
-	<img src="https://github.com/maxfaneuff/week-4-game/blob/master/assets/images/gem_one.jpg?raw=true" alt="gem_one" height="100px" width="100px" id="gemOne">
-	<img src="https://github.com/maxfaneuff/week-4-game/blob/master/assets/images/gem_two.jpg?raw=true" alt="gem_two" height="100px" width="100px" id="gemTwo">
-	<img src="https://github.com/maxfaneuff/week-4-game/blob/master/assets/images/gem_three.jpg?raw=true" alt="gem_three" height="100px" width="100px" id="gemThree">
-	<img src="https://github.com/maxfaneuff/week-4-game/blob/master/assets/images/gem_four.png?raw=true" alt="gem_four" height="100px" width="100px" id="gemFour">
+<div class="winsAndLosses">
+	<h3 id="youWin">You Win!</h3>
+	<h3 id="youLose">You Lose...</h3>
+	<h3 id="wins"></h3>
+	<h3 id="losses"></h3>
 </div>
 
+<div class="gems">
+	<button id="purple-gem" class="gem" value="purple">	
+		<img src="https://github.com/maxfaneuff/week-4-game/blob/master/assets/images/gem_one.jpg?raw=true" alt="gem_one" height="100px" width="100px" id="gemOne">
+	</button>
+
+	<button id="red-gem" class="gem" value="red">
+		<img src="https://github.com/maxfaneuff/week-4-game/blob/master/assets/images/gem_two.jpg?raw=true" alt="gem_two" height="100px" width="100px" id="gemTwo">
+	</button>
+
+	<button id="green-gem" class="gem" value="green">
+		<img src="https://github.com/maxfaneuff/week-4-game/blob/master/assets/images/gem_three.jpg?raw=true" alt="gem_three" height="100px" width="100px" id="gemThree">
+	</button>
+
+	<button id="brown-gem" class="gem" value="brown">
+		<img src="https://github.com/maxfaneuff/week-4-game/blob/master/assets/images/gem_four.jpg?raw=true" alt="gem_four" height="100px" width="100px" id="gemFour">
+	</button>
+	<button id="reset">Click to Reset</button>	
+</div>
+
+<div class="yourScoreTitle"></div>
+
+<div class="yourScore"></div>
 
 
+<script type="text/javascript">
+
+	var targetNum;
+	var userNum = 0;
+	var gemOne;
+	var gemTwo;
+	var gemThree;
+	var gemFour;
+	var isEqual = false;
+	var isGreater = false;
+	var wins = 0;
+	var losses = 0;
+
+$(document).ready(function initialize(){
+		
+		
+
+	function randomInt(min,max){
+    	return Math.floor(Math.random()*(max-min+1)+min);
+		}
+		userNum = 0;
+		targetNum = randomInt(19, 120);
+		gemOne = randomInt(1, 12)
+		gemTwo = randomInt(1, 12)
+		gemThree = randomInt(1, 12)
+		gemFour = randomInt(1, 12)
+		console.log("gems 1-4");
+		console.log(gemOne);
+		console.log(gemTwo);
+		console.log(gemThree);
+		console.log(gemFour);
+
+		$(".targetNum").text(targetNum);
+		$("#wins").text("Wins: " + wins);
+		$("#losses").text("Losses: " + losses);
+		$("#youWin").hide();
+		$("#youLose").hide();
+	
+
+		$("#gemOne").on("click", function() {
+			console.log("click value gemOne");
+			console.log(gemOne);
+			if(this.value == "purple");
+			userNum += gemOne;
+			if(userNum > targetNum) {
+				return;
+			}
+		$(".yourScore").text(userNum);
+		})
+
+		$("#gemTwo").on("click", function() {
+			console.log("click value gemTwo");
+			console.log(gemTwo);
+			if(this.value == "red");
+			userNum += gemTwo;
+
+			if(userNum > targetNum) {
+				return;
+			}
+		$(".yourScore").text(userNum);
+		})
+
+		$("#gemThree").on("click", function() {
+			console.log("click value gemThree");
+			console.log(gemThree);
+			if(this.value == "green");
+			userNum += gemThree;
+			if(userNum > targetNum) {
+				return;
+			}
+		$(".yourScore").text(userNum);
+		})
+
+		$("#gemFour").on("click", function() {
+			console.log("click value gemFour");
+			console.log(gemFour);
+			if(this.value == "brown");
+			userNum += gemFour;
+			if(userNum > targetNum) {
+				return;
+			}
+		$(".yourScore").text(userNum);
+		})
+
+		$(".gems").on("click", function() {
+			if(userNum === targetNum) {
+			isEqual = true;
+			wins++;
+
+			if(isEqual === true) {
+				$(".gems").click(false);
+			}
+			$("#wins").text("Wins: " + wins);
+				$("#youWin").show();
+				
+
+			}
+		})
+
+		$(".gems").on("click", function() {
+			if(userNum > targetNum) {
+				isGreater = true;
+				losses++;
+
+				if(isGreater === true) {
+					$(".gems").click(false);
+				}
+				$("#losses").text("Losses: " + losses);
+				$("#youLose").show();
+				// targetNum = 
+				// gemOne = randomInt(1, 12);
+				console.log(userNum);
+			}
+		})
+
+		
+		$("#reset").on("click", function() {
+			$(".targetNum").empty();
+			$(".yourScore").empty();
+			
+			userNum = 0;
+			targetNum = randomInt(19, 120);
+			gemOne = randomInt(1, 12)
+			gemTwo = randomInt(1, 12)
+			gemThree = randomInt(1, 12)
+			gemFour = randomInt(1, 12)
+			
+			$(".gems").click(true);
+			$(".targetNum").text(targetNum);
+			$("#youLose").hide();
+			$("#youWin").hide();
+
+			console.log(gemOne);
+			console.log(gemTwo);
+			console.log(gemThree);
+			console.log(gemFour);
+			console.log("gem  Reset");
+		})
+	})	
+
+//bugs://
+	//hitting button beyond loss ups count unnecessarially//
+	//getting to win/loss conditions need to stop game.//
+	//Last addition doesn't show up in userNum when you go over.//
+	//why doesn't the $(".gems").click(false); work?//
+
+
+	// $(".gems").on("click", function(event) {
+	// 	//which gem is clicked on
+	// 	//assign value from gemVar to the particular thing being clicked.  the specific img tag
+	// 	//add value to userNum
+
+	// 	if($(event.target).is("#gemOne")) {
+	// 		$("#gemOne").attr("value", gemOne);
+	// 		gemOne = event;
+	// 	}	else if ($(event.target).is("#gemTwo")) {
+	// 		$("#gemTwo").attr("value", gemTwo);
+
+	// 	}	else if($(event.target).is("#gemThree")) {
+	// 		$("#gemThree").attr("value", gemThree);
+
+	// 	}	else if($(event.target).is("#gemFour")) {
+	// 		$("#gemFour").attr("value", gemFour);
+			
+	// 	}
+	// 	userNum = userNum + event;
+		
+	// 	console.log(userNum);
+	// 	//each click of a gem + the sum of the previous clicks.  Remember wins = wins + 1 from heads/tails execrise//
+	// })
+
+
+
+</script>
 </body>
 </html>
